@@ -1,4 +1,4 @@
-package com.example.mand191_c196;
+package com.example.mand191_c196.Model;
 
 public class Assessment {
     /*

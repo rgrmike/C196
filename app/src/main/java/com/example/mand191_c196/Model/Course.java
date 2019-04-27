@@ -1,4 +1,4 @@
-package com.example.mand191_c196;
+package com.example.mand191_c196.Model;
 
 public class Course {
     /*
@@ -105,7 +105,7 @@ g. share notes via a sharing feature (either e-mail or SMS)
         return courseMentorPhone;
     }
 
-    public void setCourseMentor(String courseMentorPhone) {
+    public void setCourseMentorPhone(String courseMentorPhone) {
         this.courseMentorPhone = courseMentorPhone;
     }
 
