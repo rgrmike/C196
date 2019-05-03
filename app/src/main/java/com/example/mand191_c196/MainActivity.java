@@ -23,6 +23,7 @@ import com.example.mand191_c196.Model.Assessment;
 import com.example.mand191_c196.Model.Course;
 import com.example.mand191_c196.Model.Term;
 import com.example.mand191_c196.R;
+import com.example.mand191_c196.View.AddTermActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button nav_button_add_term;
@@ -48,9 +49,20 @@ public class MainActivity extends AppCompatActivity {
 
         nav_button_add_term.setOnClickListener(new View.OnClickListener(){
             @Override
-                    public void onClick(View v){
-                        Intent i = new Intent(MainActivity.this,);
-            })
-        }
+                    public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AddTermActivity.class);
+                //optional
+                //i.putExtra("key", value);
+                MainActivity.this.startActivity(i);
+            }
+            });
+
+
+        nav_button_add_course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
