@@ -49,21 +49,24 @@ public class CourseDat {
         dbhandler.close();
     }
 
-    public Course addCourse(Course course) {
+    public Course addCourse(String title, String start, String end, String status, String mName, String mPhone, String mEmail, String Notes, long termId) {
         ContentValues values = new ContentValues();
-        values.put(DbHelper.COURSE_ID, course.getCourseId());
-        values.put(DbHelper.COURSE_TITLE, course.getCourseTitle());
-        values.put(DbHelper.COURSE_START_DATE, course.getCourseStartDate());
-        values.put(DbHelper.COURSE_END_DATE, course.getCourseEndDate());
-        values.put(DbHelper.COURSE_STATUS, course.getCourseStatus());
-        values.put(DbHelper.COURSE_MENTOR_NAME, course.getCourseMentorName());
-        values.put(DbHelper.COURSE_MENTOR_PHONE, course.getCourseMentorPhone());
-        values.put(DbHelper.COURSE_MENTOR_EMAIL, course.getCourseMentorEmail());
-        values.put(DbHelper.COURSE_NOTES, course.getCourseNotes());
-        values.put(DbHelper.COURSE_TERM_ID, course.getTermId());
-        long insertid = database.insert(DbHelper.TABLE_COURSE, null, values);
-        course.setCourseId(insertid);
-        return course;
+
+        values.put(DbHelper.COURSE_TITLE, title);
+        values.put(DbHelper.COURSE_START_DATE, start);
+        values.put(DbHelper.COURSE_END_DATE, end);
+        values.put(DbHelper.COURSE_STATUS, status);
+        values.put(DbHelper.COURSE_MENTOR_NAME, mName);
+        values.put(DbHelper.COURSE_MENTOR_PHONE, mPhone);
+        values.put(DbHelper.COURSE_MENTOR_EMAIL, mEmail);
+        values.put(DbHelper.COURSE_NOTES, Notes);
+        values.put(DbHelper.COURSE_TERM_ID, termId);
+        long insertId = database.insert(DbHelper.TABLE_COURSE, null, values);
+        Cursor cursor = database.query(DbHelper.TABLE_COURSE, allColumns, DbHelper.COURSE_ID + " = " + insertId, null, null, null, null);
+        cursor.moveToFirst();
+        Course newCourse = makeCourse(cursor);
+        cursor.close();
+        return newCourse;
     }
 
     //Get Single Term
